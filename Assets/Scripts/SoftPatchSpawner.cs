@@ -13,9 +13,11 @@ public class SoftPatchSpawner : MonoBehaviour
 
     [Header("Spawn Location")]
     [SerializeField] private Transform spawnLocation;
+    [SerializeField] private GameObject container;
 
     [Header("Highlight")]
     [SerializeField] private Material highlightMaterial;
+    [SerializeField] private float rayLength = 100f;
     private Material originalMaterial;
     private GameObject highlightedObject;
 
@@ -50,7 +52,9 @@ public class SoftPatchSpawner : MonoBehaviour
     {
         if (!isGripHeld)
         {
-            Instantiate(softPatchPrefab, spawnLocation.transform.position, spawnLocation.transform.rotation);
+            GameObject softPatch = Instantiate(softPatchPrefab, spawnLocation.transform.position, spawnLocation.transform.rotation);
+            softPatch.transform.SetParent(container.transform);
+            
             isGripHeld = true;
         }
     }
@@ -65,7 +69,6 @@ public class SoftPatchSpawner : MonoBehaviour
         RaycastHit hit;
         Vector3 rayOrigin = transform.position;
         Vector3 rayDirection = transform.forward;
-        float rayLength = 1000f;
 
         if (Physics.Raycast(rayOrigin, rayDirection, out hit, rayLength))
         {
@@ -81,7 +84,6 @@ public class SoftPatchSpawner : MonoBehaviour
         RaycastHit hit;
         Vector3 rayOrigin = transform.position;
         Vector3 rayDirection = transform.forward;
-        float rayLength = 1000f;
 
         if (Physics.Raycast(rayOrigin, rayDirection, out hit, rayLength))
         {
