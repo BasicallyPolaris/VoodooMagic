@@ -48,6 +48,7 @@ public class SoftPatchSpawner : MonoBehaviour
         spawnAction.action.Disable();
 
         deleteAction.action.performed -= OnDeletePerformed;
+        deleteAction.action.canceled -= OnDeleteCanceled;
         deleteAction.action.Disable();
     }
 
