@@ -19,7 +19,9 @@ public class HandAnimation : MonoBehaviour
         pinchAction.action.canceled += PinchRelease;
     }
 
-    private void Awake() => animator = GetComponent<Animator>();
+    private void Awake() {
+        animator = GetComponent<Animator>();
+    }
 
     private void Gripping(InputAction.CallbackContext obj) => animator.SetFloat("Grip", obj.ReadValue<float>());
 

@@ -12,6 +12,7 @@ public class SoftPatchSpawner : MonoBehaviour
     [SerializeField] private GameObject softPatchPrefab;
 
     [Header("Spawn Location")]
+    [SerializeField] private Transform rootTransform;
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private GameObject container;
 
@@ -21,7 +22,8 @@ public class SoftPatchSpawner : MonoBehaviour
     private Material originalMaterial;
     private GameObject highlightedObject;
 
-    private bool isGripHeld = false;
+    private bool isSpawnHeld = false;
+    private bool isDeleteHeld = false;
 
     void Update()
     {
@@ -35,6 +37,7 @@ public class SoftPatchSpawner : MonoBehaviour
         spawnAction.action.Enable();
 
         deleteAction.action.performed += OnDeletePerformed;
+        deleteAction.action.canceled += OnDeleteCanceled;
         deleteAction.action.Enable();
     }
 
@@ -50,40 +53,42 @@ public class SoftPatchSpawner : MonoBehaviour
 
     private void OnSpawnPerformed(InputAction.CallbackContext context)
     {
-        if (!isGripHeld)
+        if (!isSpawnHeld)
         {
             GameObject softPatch = Instantiate(softPatchPrefab, spawnLocation.transform.position, spawnLocation.transform.rotation);
             softPatch.transform.SetParent(container.transform);
-            
-            isGripHeld = true;
+
+            isSpawnHeld = true;
         }
     }
 
     private void OnSpawnCanceled(InputAction.CallbackContext context)
     {
-        isGripHeld = false;
+        isSpawnHeld = false;
     }
 
     private void OnDeletePerformed(InputAction.CallbackContext context)
     {
-        RaycastHit hit;
-        Vector3 rayOrigin = transform.position;
-        Vector3 rayDirection = transform.forward;
-
-        if (Physics.Raycast(rayOrigin, rayDirection, out hit, rayLength))
+        if (!isDeleteHeld && highlightedObject != null)
         {
-            if (hit.collider.gameObject.CompareTag("SoftPatch"))
-            {
-                Destroy(hit.collider.gameObject);
-            }
+            Destroy(highlightedObject);
+            highlightedObject = null;
+            originalMaterial = null;
         }
+
+        isDeleteHeld = true;
+    }
+
+    private void OnDeleteCanceled(InputAction.CallbackContext context)
+    {
+        isDeleteHeld = false;
     }
 
     private void HighlightCushionInRange()
     {
         RaycastHit hit;
-        Vector3 rayOrigin = transform.position;
-        Vector3 rayDirection = transform.forward;
+        Vector3 rayOrigin = rootTransform.position;
+        Vector3 rayDirection = rootTransform.forward;
 
         if (Physics.Raycast(rayOrigin, rayDirection, out hit, rayLength))
         {
