@@ -13,6 +13,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,30 +23,53 @@ public class UI_Assistant : MonoBehaviour
     private TextWriter.TextWriterSingle textWriterSingle;
 
     [Header("UI Components")]
-    [SerializeField]private Text textComponent;
+    [SerializeField] private TextMeshProUGUI textComponent;
+    private Text text;
+
     [Header("Audio")]
     [SerializeField] private AudioSource talkingAudioSource;
 
     [Header("Messages")]
     [TextArea(3, 10)]
     [SerializeField] private string[] messages;
-    private void Awake()
+
+    private int messageIndex;
+
+    private void Start()
     {
+        messageIndex = 0;
+        playNextLine();
+    }
 
-        foreach (string message in messages)
+    public void playNextLine()
+    {
+        StartCoroutine(PlayNextLineCoroutine());
+    }
+
+    private IEnumerator PlayNextLineCoroutine()
+    {
+        if (textWriterSingle != null && textWriterSingle.IsActive())
         {
-            if (textWriterSingle != null && textWriterSingle.IsActive())
-            {
-                // Currently active TextWriter
-                textWriterSingle.WriteAllAndDestroy();
-            }
-            else
-            {
+            // Currently active TextWriter
+            textWriterSingle.WriteAllAndDestroy();
+            yield break;
+        }
 
-                StartTalkingSound();
-                textWriterSingle = TextWriter.AddWriter_Static(textComponent, message, .02f, true, true, StopTalkingSound);
-                new WaitForSeconds(message.Length * .02f);
+        if (messageIndex < messages.Length)
+        {
+            if (messageIndex > 0 && messageIndex < messages.Length)
+            {
+                StopTalkingSound();
+                yield return new WaitForSeconds(2);
             }
+
+            StartTalkingSound();
+            textWriterSingle = TextWriter.AddWriter_Static(textComponent, messages[messageIndex], .02f, false, false, playNextLine);
+            messageIndex++;
+        }
+        else
+        {
+            StopTalkingSound();
         }
     }
 
@@ -58,10 +82,4 @@ public class UI_Assistant : MonoBehaviour
     {
         talkingAudioSource.Stop();
     }
-
-    private void Start()
-    {
-        //TextWriter.AddWriter_Static(messageText, "This is the assistant speaking, hello and goodbye, see you next time!", .1f, true);
-    }
-
 }

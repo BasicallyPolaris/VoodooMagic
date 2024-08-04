@@ -2453,6 +2453,7 @@ GameObject:
   - component: {fileID: 1410415329305597464}
   - component: {fileID: 5212400255501035291}
   - component: {fileID: 9022537146539803219}
+  - component: {fileID: 7207863587065876109}
   m_Layer: 0
   m_Name: Speech-Bubble
   m_TagString: Untagged
@@ -2543,6 +2544,25 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &7207863587065876109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8042440364332558081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d87af188834eeb64ab0b64fa5d9b4e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textComponent: {fileID: 3279473225954237500}
+  talkingAudioSource: {fileID: 0}
+  messages:
+  - Hello!
+  - We really need your help.
+  - Our city is being attacked by monsters and you the last Voodoo magician around!
+  - Please take all the wool you need to prepare for fighting the monsters!
 --- !u!1 &8241137899873426809
 GameObject:
   m_ObjectHideFlags: 0
