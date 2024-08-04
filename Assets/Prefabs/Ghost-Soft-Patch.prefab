@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9160326565063231402}
+  - component: {fileID: 4791316492875700952}
   m_Layer: 0
   m_Name: Ghost-Soft-Patch
   m_TagString: Untagged
@@ -32,6 +33,28 @@ Transform:
   - {fileID: 4413432181530548669}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &4791316492875700952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344228701464914322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c9782476195a7f4a94a434c574e1e4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnAction: {fileID: 2398107341564075493, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  deleteAction: {fileID: -1933264127102390071, guid: c348712bda248c246b8c49b3db54643f,
+    type: 3}
+  softPatchPrefab: {fileID: 8326760076232282311, guid: 63229264cf8bdd744bba0d4195db5de7,
+    type: 3}
+  spawnLocation: {fileID: 9160326565063231402}
+  container: {fileID: 0}
+  highlightMaterial: {fileID: 2100000, guid: 6a83d54887d3b9843954a1a1ee9da4a3, type: 2}
+  rayLength: 100
 --- !u!1 &7801784401902199992
 GameObject:
   m_ObjectHideFlags: 0
