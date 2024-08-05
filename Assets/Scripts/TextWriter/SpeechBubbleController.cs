@@ -1,20 +1,10 @@
-﻿/* 
-    ------------------- Code Monkey -------------------
-
-    Thank you for downloading this package
-    I hope you find it useful in your projects
-    If you have any questions let me know
-    Cheers!
-
-               unitycodemonkey.com
-    --------------------------------------------------
- */
-
+﻿using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class UI_Assistant : MonoBehaviour
+public class SpeechBubbleAssistant : MonoBehaviour
 {
     private TextWriter.TextWriterSingle textWriterSingle;
     [Header("Start On Awake")]
@@ -32,11 +22,14 @@ public class UI_Assistant : MonoBehaviour
 
     [Header("Timing")]
     [SerializeField] private float timeBetweenMessages = 2f;
-    [SerializeField] private float timePerCharacter = .02f;
+    [SerializeField] private float timePerCharacter = 0.02f;
 
     [Header("Messages")]
     [TextArea(3, 10)]
     [SerializeField] private string[] messages;
+
+    [Header("Actions")]
+    [SerializeField] private UnityEvent[] endEvents;
 
     private int messageIndex;
     
@@ -44,9 +37,6 @@ public class UI_Assistant : MonoBehaviour
     {
         textComponent.text = "";
         animator = npc.GetComponent<Animator>();
-        Debug.Log(animator);
-        Debug.Log(npc.name);
-
         if (startOnAwake) {
             startPlaying();
         }
@@ -88,6 +78,10 @@ public class UI_Assistant : MonoBehaviour
         {
             StopTalkingSound();
             animator.SetBool("Talking", false);
+            foreach (UnityEvent @event in endEvents)
+            {
+                @event.Invoke();
+            }
         }
     }
 
