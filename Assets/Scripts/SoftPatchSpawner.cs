@@ -4,6 +4,16 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class SoftPatchSpawner : MonoBehaviour
 {
+    public enum RayDirection
+    {
+        Forward,
+        Up,
+        Down,
+        Left,
+        Right,
+        Backward
+    }
+
     [Header("Actions")]
     [SerializeField] private InputActionReference spawnAction;
     [SerializeField] private InputActionReference deleteAction;
@@ -15,12 +25,15 @@ public class SoftPatchSpawner : MonoBehaviour
     [SerializeField] private Transform rootTransform;
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private GameObject container;
+    [SerializeField] private RayDirection rayDirection = RayDirection.Forward;
+
 
     [Header("Highlight")]
     [SerializeField] private Material highlightMaterial;
     [SerializeField] private float rayLength = 100f;
     private Material originalMaterial;
     private GameObject highlightedObject;
+
 
     private bool isSpawnHeld = false;
     private bool isDeleteHeld = false;
@@ -88,8 +101,10 @@ public class SoftPatchSpawner : MonoBehaviour
     private void HighlightCushionInRange()
     {
         RaycastHit hit;
-        Vector3 rayOrigin = rootTransform.position;
-        Vector3 rayDirection = rootTransform.forward;
+        Vector3 rayOrigin = rootTransform.position - GetRayDirection() * 0.1f;
+        Vector3 rayDirection = GetRayDirection();
+
+        Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red);
 
         if (Physics.Raycast(rayOrigin, rayDirection, out hit, rayLength))
         {
@@ -114,6 +129,26 @@ public class SoftPatchSpawner : MonoBehaviour
         {
             highlightedObject.GetComponent<Renderer>().material = originalMaterial;
             highlightedObject = null;
+        }
+    }
+    private Vector3 GetRayDirection()
+    {
+        switch (rayDirection)
+        {
+            case RayDirection.Forward:
+                return rootTransform.forward;
+            case RayDirection.Up:
+                return rootTransform.up;
+            case RayDirection.Down:
+                return -rootTransform.up;
+            case RayDirection.Left:
+                return -rootTransform.right;
+            case RayDirection.Right:
+                return rootTransform.right;
+            case RayDirection.Backward:
+                return -rootTransform.forward;
+            default:
+                return rootTransform.forward;
         }
     }
 }
