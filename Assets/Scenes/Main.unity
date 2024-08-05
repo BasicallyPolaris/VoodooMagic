@@ -3489,12 +3489,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 95664798}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &96121834 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3344228701464914322, guid: 2935a7d75fdadf74a878341e47662cb0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1610194121}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &99445865
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5729,12 +5723,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 496004, guid: 0a5ef1aaf47f03547983772b8f1f3a80,
     type: 3}
   m_PrefabInstance: {fileID: 165735797}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &169421091 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3344228701464914322, guid: 2935a7d75fdadf74a878341e47662cb0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1282811884}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &171261867
 PrefabInstance:
@@ -21920,7 +21908,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &689862190
 Transform:
   m_ObjectHideFlags: 0
@@ -21953,12 +21941,6 @@ PlayableDirector:
   m_SceneBindings:
   - key: {fileID: 4051467712318776634, guid: 6ff503646f8b24d469bf4a34471b309a, type: 2}
     value: {fileID: 83622068}
-  - key: {fileID: -6307947817900153679, guid: 6ff503646f8b24d469bf4a34471b309a, type: 2}
-    value: {fileID: 96121834}
-  - key: {fileID: 3078474918807618635, guid: 6ff503646f8b24d469bf4a34471b309a, type: 2}
-    value: {fileID: 169421091}
-  - key: {fileID: 8691964662228916001, guid: 6ff503646f8b24d469bf4a34471b309a, type: 2}
-    value: {fileID: 1789148535}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &690196718
@@ -62925,6 +62907,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Speech-TMP
+      objectReference: {fileID: 0}
+    - target: {fileID: 1410415329305597464, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 832801609}
+    - target: {fileID: 1410415329305597464, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+        type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3279473225954237500, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
         type: 3}

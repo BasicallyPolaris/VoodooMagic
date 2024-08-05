@@ -10,3 +10,7 @@ This is a demo game made in Unity which is supposed to be played in Oculus VR wi
 - [Kenney](https://kenney.nl/assets/category:3D/page:2?sort=update)
 ### VR Hands + Script
 - [Udemy Course by Daniel Stringer](https://www.udemy.com/course/unityspaceshooter/)
+
+## Scripts
+### Speechbubble Animation & Sound
+- [How to make Text Writing Effect in Unity by Code Monkey](https://www.youtube.com/watch?v=ZVh4nH8Mayg&t=149s)
