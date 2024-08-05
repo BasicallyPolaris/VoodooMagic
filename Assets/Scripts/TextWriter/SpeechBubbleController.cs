@@ -10,38 +10,54 @@
     --------------------------------------------------
  */
 
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class UI_Assistant : MonoBehaviour
 {
     private TextWriter.TextWriterSingle textWriterSingle;
+    [Header("Start On Awake")]
+    [SerializeField] private bool startOnAwake = true;
 
     [Header("UI Components")]
     [SerializeField] private TextMeshProUGUI textComponent;
-    private Text text;
 
     [Header("Audio")]
     [SerializeField] private AudioSource talkingAudioSource;
+
+    [Header("Character")]
+    [SerializeField] private GameObject npc;
+    private Animator animator;
+
+    [Header("Timing")]
+    [SerializeField] private float timeBetweenMessages = 2f;
+    [SerializeField] private float timePerCharacter = .02f;
 
     [Header("Messages")]
     [TextArea(3, 10)]
     [SerializeField] private string[] messages;
 
     private int messageIndex;
-
-    private void Start()
+    
+    void Awake()
     {
+        textComponent.text = "";
+        animator = npc.GetComponent<Animator>();
+        Debug.Log(animator);
+        Debug.Log(npc.name);
+
+        if (startOnAwake) {
+            startPlaying();
+        }
+    }
+
+    public void startPlaying() {
         messageIndex = 0;
         playNextLine();
     }
 
-    public void playNextLine()
+    private void playNextLine()
     {
         StartCoroutine(PlayNextLineCoroutine());
     }
@@ -50,7 +66,6 @@ public class UI_Assistant : MonoBehaviour
     {
         if (textWriterSingle != null && textWriterSingle.IsActive())
         {
-            // Currently active TextWriter
             textWriterSingle.WriteAllAndDestroy();
             yield break;
         }
@@ -60,16 +75,19 @@ public class UI_Assistant : MonoBehaviour
             if (messageIndex > 0 && messageIndex < messages.Length)
             {
                 StopTalkingSound();
-                yield return new WaitForSeconds(2);
+                animator.SetBool("Talking", false);
+                yield return new WaitForSeconds(timeBetweenMessages);
             }
 
+            animator.SetBool("Talking", true);
             StartTalkingSound();
-            textWriterSingle = TextWriter.AddWriter_Static(textComponent, messages[messageIndex], .02f, false, false, playNextLine);
+            textWriterSingle = TextWriter.AddWriter_Static(textComponent, messages[messageIndex], timePerCharacter, false, false, playNextLine);
             messageIndex++;
         }
         else
         {
             StopTalkingSound();
+            animator.SetBool("Talking", false);
         }
     }
 

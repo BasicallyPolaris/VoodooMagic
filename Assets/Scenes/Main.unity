@@ -2818,102 +2818,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2890709997345380982}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &83622073
+--- !u!82 &83622073 stripped
 AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1275460116683534721, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+    type: 3}
+  m_PrefabInstance: {fileID: 2890709997345380982}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 83622068}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: eb3c555406e9d6b4b894a9c233265f8f, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1001 &86179941
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54082,6 +53992,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1841646328}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1842995689 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9213123019197535979, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+    type: 3}
+  m_PrefabInstance: {fileID: 2890709997345380982}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1844963456
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62962,6 +62878,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4477843639761956657, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
         type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9feab188ade95744d8290a242555bd9c, type: 2}
+    - target: {fileID: 4477843639761956657, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+        type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
@@ -63022,14 +62943,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7207863587065876109, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
         type: 3}
+      propertyPath: npc
+      value: 
+      objectReference: {fileID: 1842995689}
+    - target: {fileID: 7207863587065876109, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+        type: 3}
+      propertyPath: startOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207863587065876109, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+        type: 3}
+      propertyPath: timePerCharacter
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207863587065876109, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+        type: 3}
       propertyPath: talkingAudioSource
       value: 
       objectReference: {fileID: 83622073}
     - target: {fileID: 7207863587065876109, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
         type: 3}
+      propertyPath: messages.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207863587065876109, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+        type: 3}
+      propertyPath: messages.Array.data[0]
+      value: Finally, you are awake!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207863587065876109, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+        type: 3}
+      propertyPath: messages.Array.data[1]
+      value: While you were asleep our city has been attacked by monsters and you
+        are the last Voodoo magician around!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207863587065876109, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+        type: 3}
       propertyPath: messages.Array.data[2]
-      value: Our city is being attacked by monsters and you are the last Voodoo magician
-        around!
+      value: Please take all the wool you need to prepare for fighting the monsters!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207863587065876109, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+        type: 3}
+      propertyPath: messages.Array.data[3]
+      value: Please take all the wool you need to prepare for fighting the monsters!
+      objectReference: {fileID: 0}
+    - target: {fileID: 7207863587065876109, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
+        type: 3}
+      propertyPath: messages.Array.data[4]
+      value: Please take all the wool you need to prepare for fighting the monsters!
       objectReference: {fileID: 0}
     - target: {fileID: 8042440364332558081, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
         type: 3}
@@ -63049,11 +63010,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8042440364332558081, guid: 4316c9cf1269ccf43aa8e2c464f64dab,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 83622073}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4316c9cf1269ccf43aa8e2c464f64dab, type: 3}
 --- !u!4 &8249230696696797592 stripped
 Transform:
