@@ -104,8 +104,6 @@ public class SoftPatchSpawner : MonoBehaviour
         Vector3 rayOrigin = rootTransform.position - GetRayDirection() * 0.1f;
         Vector3 rayDirection = GetRayDirection();
 
-        Debug.DrawRay(rayOrigin, rayDirection * rayLength, Color.red);
-
         if (Physics.Raycast(rayOrigin, rayDirection, out hit, rayLength))
         {
             if (hit.collider.gameObject.CompareTag("SoftPatch"))
