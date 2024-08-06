@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using Oculus.Interaction.GrabAPI;
 using UnityEngine;
 
@@ -18,6 +19,10 @@ public class SoftPatchSpawnerHandTracker : MonoBehaviour
 
     [Header("Prefabs")]
     [SerializeField] private GameObject softPatchPrefab;
+
+    [Header("Controller API GameObject")]
+    [Description("This is to make sure only the Hand Tracking API GameObject is active or the Controllers")]
+    [SerializeField] private GameObject controllerAPI;
 
     [Header("Spawn Location")]
     [SerializeField] private Transform rootTransform;
@@ -49,6 +54,14 @@ public class SoftPatchSpawnerHandTracker : MonoBehaviour
             Debug.LogError("Hand Grab API is not set.");
             return;
         }
+
+        controllerAPI.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        RemoveHighlight();
+        controllerAPI.SetActive(true);
     }
 
     private void CheckGrabStates()

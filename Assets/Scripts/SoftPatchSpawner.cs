@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.XR.Interaction.Toolkit;
@@ -26,7 +27,6 @@ public class SoftPatchSpawner : MonoBehaviour
     [SerializeField] private Transform spawnLocation;
     [SerializeField] private GameObject container;
     [SerializeField] private RayDirection rayDirection = RayDirection.Forward;
-
 
     [Header("Highlight")]
     [SerializeField] private Material highlightMaterial;
@@ -63,6 +63,8 @@ public class SoftPatchSpawner : MonoBehaviour
         deleteAction.action.performed -= OnDeletePerformed;
         deleteAction.action.canceled -= OnDeleteCanceled;
         deleteAction.action.Disable();
+
+        RemoveHighlight();
     }
 
     private void OnSpawnPerformed(InputAction.CallbackContext context)

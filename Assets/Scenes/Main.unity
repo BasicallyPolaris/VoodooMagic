@@ -62093,6 +62093,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 915703148644800280, guid: b1b9478c801e4614e8e73aaeedc9f1ad,
+        type: 3}
+      propertyPath: controllerAPI
+      value: 
+      objectReference: {fileID: 169421091}
+    - target: {fileID: 1264420041879277004, guid: b1b9478c801e4614e8e73aaeedc9f1ad,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 1820781515317637477, guid: b1b9478c801e4614e8e73aaeedc9f1ad,
         type: 3}
       propertyPath: _controller
@@ -62153,6 +62163,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.18
       objectReference: {fileID: 0}
+    - target: {fileID: 2723969506009413602, guid: b1b9478c801e4614e8e73aaeedc9f1ad,
+        type: 3}
+      propertyPath: controllerAPI
+      value: 
+      objectReference: {fileID: 96121834}
+    - target: {fileID: 2723969506009413602, guid: b1b9478c801e4614e8e73aaeedc9f1ad,
+        type: 3}
+      propertyPath: softPatchPrefab
+      value: 
+      objectReference: {fileID: 8326760076232282311, guid: 63229264cf8bdd744bba0d4195db5de7,
+        type: 3}
     - target: {fileID: 3476178409044631311, guid: b1b9478c801e4614e8e73aaeedc9f1ad,
         type: 3}
       propertyPath: m_Name
@@ -62187,6 +62208,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Hand-API-Provider_C_L
+      objectReference: {fileID: 0}
+    - target: {fileID: 9079526530594970644, guid: b1b9478c801e4614e8e73aaeedc9f1ad,
+        type: 3}
+      propertyPath: m_Name
+      value: Hand-API-Provider_HT_L
+      objectReference: {fileID: 0}
+    - target: {fileID: 9169411501567827794, guid: b1b9478c801e4614e8e73aaeedc9f1ad,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2510854176060190014, guid: b1b9478c801e4614e8e73aaeedc9f1ad, type: 3}
