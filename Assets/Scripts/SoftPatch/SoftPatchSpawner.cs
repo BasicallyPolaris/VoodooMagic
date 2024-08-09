@@ -5,9 +5,11 @@ namespace VoodooMagic.Scripts.SoftPatch
 {
   public class SoftPatchSpawner : MonoBehaviour
   {
+    [Header("Controller / Hand Tracking")]
+    [SerializeField] protected bool isHandTracking = false;
 
     [Header("Spawn Location")]
-    [Tooltip("Consider taking the root game object of the component  the script is on.")]
+    [Tooltip("Consider taking the root game object of the component the script is on.")]
     [SerializeField] protected Transform raycastSource;
     [SerializeField] protected Transform spawnLocation;
     [SerializeField] protected RayDirection rayDirection = RayDirection.Forward;
@@ -19,9 +21,9 @@ namespace VoodooMagic.Scripts.SoftPatch
     private Material originalMaterial;
     private GameObject highlightedObject;
 
-    private void Start()
+    private void Awake()
     {
-      container = GameObject.Find("SoftPatch-Logic");
+      container = GameObject.FindWithTag("SoftPatchSystem");
       softPatchPrefab = container.GetComponent<SoftPatchManager>().getSoftPatchPrefab();
       highlightMaterial = container.GetComponent<SoftPatchManager>().getHighlightMaterial();
       rayLength = container.GetComponent<SoftPatchManager>().getRayLength();
@@ -32,12 +34,15 @@ namespace VoodooMagic.Scripts.SoftPatch
       RemoveHighlight();
     }
 
+    private void Update()
+    {
+      HighlightCushionInRange();
+    }
+
     public void SpawnSoftPatch()
     {
-      {
-        GameObject softPatch = Instantiate(softPatchPrefab, spawnLocation.transform.position, spawnLocation.transform.rotation);
-        softPatch.transform.SetParent(container.transform);
-      }
+      GameObject softPatch = Instantiate(softPatchPrefab, spawnLocation.transform.position, spawnLocation.transform.rotation);
+      softPatch.transform.SetParent(container.transform);
     }
 
     public void DeleteHighlightedObject()
@@ -50,7 +55,16 @@ namespace VoodooMagic.Scripts.SoftPatch
       }
     }
 
-    public void HighlightCushionInRange()
+    private void RemoveHighlight()
+    {
+      if (highlightedObject != null && originalMaterial != null)
+      {
+        highlightedObject.GetComponent<Renderer>().material = originalMaterial;
+        highlightedObject = null;
+      }
+    }
+
+    private void HighlightCushionInRange()
     {
       RaycastHit hit;
       Vector3 rayOrigin = raycastSource.position - Util.GetRayDirection(this.rayDirection, raycastSource) * 0.1f;
@@ -71,15 +85,6 @@ namespace VoodooMagic.Scripts.SoftPatch
         }
       }
       RemoveHighlight();
-    }
-
-    public void RemoveHighlight()
-    {
-      if (highlightedObject != null)
-      {
-        highlightedObject.GetComponent<Renderer>().material = originalMaterial;
-        highlightedObject = null;
-      }
     }
   }
 }

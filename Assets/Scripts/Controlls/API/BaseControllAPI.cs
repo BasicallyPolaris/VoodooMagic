@@ -3,42 +3,36 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using VoodooMagic.Scripts.SoftPatch;
 
 namespace VoodooMagic.Scripts.Controlls.API
 {
   public abstract class BaseControllAPI : MonoBehaviour
   {
-
-    [Header("Actions")]
-    [SerializeField] protected UnityEvent[] updateActions;
-    [SerializeField] protected UnityEvent[] pinchActions;
-    [SerializeField] protected UnityEvent[] grabActions;
-
+    [Header("SoftPatchSpawner")]
+    [SerializeField] public SoftPatchSpawner softPatchSpawner;
+    protected ControllManager controllManager;
     protected bool isPinching = false;
     protected bool isGrabbing = false;
 
+    protected void Awake()
+    {
+      controllManager = GameObject.FindWithTag("ControllSystem").GetComponent<ControllManager>();
+    }
+
     protected virtual void Update()
     {
-      foreach (UnityEvent action in updateActions)
-      {
-        action.Invoke();
-      }
+      controllManager.OnUpdate();
     }
 
     protected void OnPinch()
     {
-      foreach (UnityEvent action in pinchActions)
-      {
-        action.Invoke();
-      }
+      controllManager.OnPinch(softPatchSpawner);
     }
 
     protected void OnGrab()
     {
-      foreach (UnityEvent action in grabActions)
-      {
-        action.Invoke();
-      }
+      controllManager.OnGrab(softPatchSpawner);
     }
   }
 }

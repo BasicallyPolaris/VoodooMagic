@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.XR.Interaction.Toolkit.Samples.StarterAssets;
 using VoodooMagic.Scripts.Controlls.API;
+using VoodooMagic.Scripts.SoftPatch;
 
 namespace VoodooMagic.Scripts.Controlls
 {
@@ -70,5 +72,20 @@ namespace VoodooMagic.Scripts.Controlls
       controllerAPILeft.gameObject.SetActive(false);
       controllerAPIRight.gameObject.SetActive(false);
     }
+
+    public void OnUpdate()
+    {
+    }
+
+    public void OnPinch(SoftPatchSpawner spawner)
+    {
+      spawner.SpawnSoftPatch();
+    }
+
+    public void OnGrab(SoftPatchSpawner spawner)
+    {
+      spawner.DeleteHighlightedObject(); 
+    }
   }
+
 }

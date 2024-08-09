@@ -11,9 +11,10 @@ namespace VoodooMagic.Scripts.Controlls.API
         [Header("Hand Tracking")]
         [SerializeField] private HandGrabAPI handGrabAPI;
 
-        [Header("Controller API GameObject")]
+        [Header("Controller SPS GameObject")]
         [Tooltip("This is to make sure only the Hand Tracking API GameObject is active or the Controllers")]
-        [SerializeField] private GameObject controllerAPI;
+        [SerializeField] private GameObject controllerSPSLeft;
+        [SerializeField] private GameObject controllerSPSRight;
 
         private void OnEnable()
         {
@@ -23,12 +24,14 @@ namespace VoodooMagic.Scripts.Controlls.API
                 return;
             }
 
-            controllerAPI.SetActive(false);
+            controllerSPSLeft.SetActive(false);
+            controllerSPSRight.SetActive(false);
         }
 
         private void OnDisable()
         {
-            controllerAPI.SetActive(true);
+            controllerSPSLeft.SetActive(true);
+            controllerSPSRight.SetActive(true);
         }
 
         protected override void Update()

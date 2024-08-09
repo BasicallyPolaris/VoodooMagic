@@ -8,6 +8,7 @@ TagManager:
   - UICanvas
   - SoftPatchSystem
   - ControllSystem
+  - GameSystem
   layers:
   - Default
   - TransparentFX
