@@ -2479,7 +2479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 2.4}
+  m_AnchoredPosition: {x: 0, y: 2.5}
   m_SizeDelta: {x: 2, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &1410415329305597464
@@ -2559,15 +2559,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startOnAwake: 1
   textComponent: {fileID: 3279473225954237500}
-  talkingAudioSource: {fileID: 0}
-  npc: {fileID: 0}
+  talkingAudioSource: {fileID: 1275460116683534721}
+  npc: {fileID: 9213123019197535979}
   timeBetweenMessages: 2
-  timePerCharacter: 0.2
+  timePerCharacter: 0.02
   messages:
   - Hello!
   - We really need your help.
   - Our city is being attacked by monsters and you the last Voodoo magician around!
   - Please take all the wool you need to prepare for fighting the monsters!
+  endEvents: []
 --- !u!82 &1275460116683534721
 AudioSource:
   m_ObjectHideFlags: 0

@@ -9,7 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9160326565063231402}
-  - component: {fileID: 4791316492875700952}
+  - component: {fileID: -4690973706357081954}
+  - component: {fileID: 8845776575089965101}
   m_Layer: 0
   m_Name: Hand-API-Provider_C
   m_TagString: Untagged
@@ -33,7 +34,7 @@ Transform:
   - {fileID: 4413432181530548669}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &4791316492875700952
+--- !u!114 &-4690973706357081954
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,19 +43,81 @@ MonoBehaviour:
   m_GameObject: {fileID: 3344228701464914322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c9782476195a7f4a94a434c574e1e4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 47bdecc818bb44f44a672b331b86acf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnAction: {fileID: 2398107341564075493, guid: c348712bda248c246b8c49b3db54643f,
+  updateActions:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8845776575089965101}
+        m_TargetAssemblyTypeName: VoodooMagic.Scripts.SoftPatchSpawner.SoftPatchSpawner,
+          Assembly-CSharp
+        m_MethodName: HighlightCushionInRange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  pinchActions:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8845776575089965101}
+        m_TargetAssemblyTypeName: VoodooMagic.Scripts.SoftPatchSpawner.SoftPatchSpawner,
+          Assembly-CSharp
+        m_MethodName: SpawnSoftPatch
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  grabActions:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8845776575089965101}
+        m_TargetAssemblyTypeName: VoodooMagic.Scripts.SoftPatchSpawner.SoftPatchSpawner,
+          Assembly-CSharp
+        m_MethodName: DeleteHighlightedObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  pinchAction: {fileID: 8429157816736509786, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
-  deleteAction: {fileID: -1933264127102390071, guid: c348712bda248c246b8c49b3db54643f,
+  grabAction: {fileID: -741667397773074983, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
+--- !u!114 &8845776575089965101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344228701464914322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72baf2bdb1b47b243a71931fbb40ea85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   softPatchPrefab: {fileID: 8326760076232282311, guid: 63229264cf8bdd744bba0d4195db5de7,
     type: 3}
-  spawnLocation: {fileID: 9160326565063231402}
+  raycastSource: {fileID: 9160326565063231402}
+  spawnLocation: {fileID: 4413432181530548669}
   container: {fileID: 0}
+  rayDirection: 0
   highlightMaterial: {fileID: 2100000, guid: 6a83d54887d3b9843954a1a1ee9da4a3, type: 2}
-  rayLength: 100
+  rayLength: 10
 --- !u!1 &7801784401902199992
 GameObject:
   m_ObjectHideFlags: 0
