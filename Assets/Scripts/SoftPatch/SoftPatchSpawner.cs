@@ -1,26 +1,31 @@
 using UnityEngine;
 using VoodooMagic.Scripts.Constants;
 
-namespace VoodooMagic.Scripts.SoftPatchSpawner
+namespace VoodooMagic.Scripts.SoftPatch
 {
   public class SoftPatchSpawner : MonoBehaviour
   {
-    [Header("Prefabs")]
-    [SerializeField] protected GameObject softPatchPrefab;
 
     [Header("Spawn Location")]
     [Tooltip("Consider taking the root game object of the component  the script is on.")]
     [SerializeField] protected Transform raycastSource;
     [SerializeField] protected Transform spawnLocation;
-    [SerializeField] protected GameObject container;
     [SerializeField] protected RayDirection rayDirection = RayDirection.Forward;
 
-    [Header("Highlight")]
-    [SerializeField] protected Material highlightMaterial;
-    [SerializeField] protected float rayLength = 100f;
-
+    private Material highlightMaterial;
+    private float rayLength = 100f;
+    private GameObject container;
+    private GameObject softPatchPrefab;
     private Material originalMaterial;
     private GameObject highlightedObject;
+
+    private void Start()
+    {
+      container = GameObject.Find("SoftPatch-Logic");
+      softPatchPrefab = container.GetComponent<SoftPatchManager>().getSoftPatchPrefab();
+      highlightMaterial = container.GetComponent<SoftPatchManager>().getHighlightMaterial();
+      rayLength = container.GetComponent<SoftPatchManager>().getRayLength();
+    }
 
     private void OnDisable()
     {
@@ -68,7 +73,7 @@ namespace VoodooMagic.Scripts.SoftPatchSpawner
       RemoveHighlight();
     }
 
-    private void RemoveHighlight()
+    public void RemoveHighlight()
     {
       if (highlightedObject != null)
       {

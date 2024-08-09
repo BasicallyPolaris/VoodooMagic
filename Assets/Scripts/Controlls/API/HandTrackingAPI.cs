@@ -4,7 +4,7 @@ using Oculus.Interaction.GrabAPI;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace VoodooMagic.Scripts.Controlls
+namespace VoodooMagic.Scripts.Controlls.API
 {
     public class HandTrackingAPI : BaseControllAPI
     {

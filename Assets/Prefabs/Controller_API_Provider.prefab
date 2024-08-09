@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -4690973706357081954}
   - component: {fileID: 8845776575089965101}
   m_Layer: 0
-  m_Name: Hand-API-Provider_C
+  m_Name: Controller_API_Provider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -110,14 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72baf2bdb1b47b243a71931fbb40ea85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  softPatchPrefab: {fileID: 8326760076232282311, guid: 63229264cf8bdd744bba0d4195db5de7,
-    type: 3}
   raycastSource: {fileID: 9160326565063231402}
   spawnLocation: {fileID: 4413432181530548669}
-  container: {fileID: 0}
   rayDirection: 0
-  highlightMaterial: {fileID: 2100000, guid: 6a83d54887d3b9843954a1a1ee9da4a3, type: 2}
-  rayLength: 10
 --- !u!1 &7801784401902199992
 GameObject:
   m_ObjectHideFlags: 0
@@ -130,7 +125,7 @@ GameObject:
   - component: {fileID: 9204685496856720531}
   - component: {fileID: 3364202993242580062}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: SoftPatch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

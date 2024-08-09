@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace VoodooMagic.Scripts.Controlls
+namespace VoodooMagic.Scripts.Controlls.API
 {
   public abstract class BaseControllAPI : MonoBehaviour
   {

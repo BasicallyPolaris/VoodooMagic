@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace VoodooMagic.Scripts.Controlls
+namespace VoodooMagic.Scripts.Controlls.API
 {
     public class ControllerAPI : BaseControllAPI
     {
@@ -9,7 +9,7 @@ namespace VoodooMagic.Scripts.Controlls
         [SerializeField] private InputActionReference pinchAction;
         [SerializeField] private InputActionReference grabAction;
 
-        void OnEnable()
+        private void OnEnable()
         {
             pinchAction.action.performed += OnPinch;
             pinchAction.action.canceled += OnPinchReleased;
@@ -20,7 +20,7 @@ namespace VoodooMagic.Scripts.Controlls
             grabAction.action.Enable();
         }
 
-        void OnDisable()
+        private void OnDisable()
         {
             pinchAction.action.performed -= OnPinch;
             pinchAction.action.canceled -= OnPinchReleased;
