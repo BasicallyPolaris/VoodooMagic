@@ -10,12 +10,15 @@ namespace VoodooMagic.Scripts.SoftPatch
 
     [Header("Spawn Location")]
     [Tooltip("Consider taking the root game object of the component the script is on.")]
-    [SerializeField] protected Transform raycastSource;
+    [SerializeField] private Transform raycastSource;
     [SerializeField] protected Transform spawnLocation;
-    [SerializeField] protected RayDirection rayDirection = RayDirection.Forward;
+    [SerializeField] private RayDirection rayDirection = RayDirection.Forward;
+
+    public Transform RaycastSource { get => raycastSource; private set => raycastSource = value; }
+    public RayDirection RayDirection { get => rayDirection; private set => rayDirection = value; }
 
     private Material highlightMaterial;
-    private float rayLength = 100f;
+    private float rayLength = 10f;
     private GameObject container;
     private GameObject softPatchPrefab;
     private Material originalMaterial;
