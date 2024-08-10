@@ -15,7 +15,7 @@ namespace VoodooMagic.Scripts.SoftPatch
 
     [Header("Highlight")]
     [SerializeField] private Material highlightMaterial;
-    [SerializeField] private float rayLength = 100f;
+    [SerializeField] private float rayLength = 10f;
 
     [Header("Hand Tracking - SoftPatchSpawner")]
     [SerializeField] private SoftPatchSpawner spsHandLeft;
@@ -85,18 +85,6 @@ namespace VoodooMagic.Scripts.SoftPatch
     {
       spsControllerLeft.SetIsActive(false);
       spsControllerRight.SetIsActive(false);
-    }
-
-    public void SetActive(bool isHandTracking)
-    {
-      if (isHandTracking)
-      {
-        DisableControllerSPS();
-      }
-      else
-      {
-        EnableControllerSPS();
-      }
     }
   }
 }

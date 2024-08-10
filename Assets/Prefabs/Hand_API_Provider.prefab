@@ -91,3 +91,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1c45f44a07b43e4ca5f7cd84400ae3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHandTracking: 1

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Oculus.Interaction.GrabAPI;
 using Unity.VisualScripting;
 using UnityEngine;
+using VoodooMagic.Scripts.SoftPatch;
+using VoodooMagic.Scripts.UI;
 
 namespace VoodooMagic.Scripts.Controlls.API
 {
@@ -11,10 +13,16 @@ namespace VoodooMagic.Scripts.Controlls.API
         [Header("Hand Tracking")]
         [SerializeField] private HandGrabAPI handGrabAPI;
 
-        [Header("Controller SPS GameObject")]
-        [Tooltip("This is to make sure only the Hand Tracking API GameObject is active or the Controllers")]
-        [SerializeField] private GameObject controllerSPSLeft;
-        [SerializeField] private GameObject controllerSPSRight;
+        public ControllerState controllerState { private get; set; }
+        private SoftPatchController softPatchController;
+        private UIInteractorController uiInteractorController;
+
+        protected override void Awake()
+        {
+            softPatchController = GameObject.FindWithTag("SoftPatchSystem").GetComponent<SoftPatchController>();
+            uiInteractorController = GameObject.FindWithTag("UISystem").GetComponent<UIInteractorController>();
+            base.Awake();
+        }
 
         private void OnEnable()
         {
@@ -24,14 +32,32 @@ namespace VoodooMagic.Scripts.Controlls.API
                 return;
             }
 
-            controllerSPSLeft.SetActive(false);
-            controllerSPSRight.SetActive(false);
+            switch (controllerState)
+            {
+                case ControllerState.UIInteraction:
+                    uiInteractorController.DisableControllerUIInteractor();
+                    break;
+                case ControllerState.SoftPatchInteraction:
+                    softPatchController.DisableControllerSPS();
+                    break;
+                default:
+                    break;
+            }
         }
 
         private void OnDisable()
         {
-            controllerSPSLeft.SetActive(true);
-            controllerSPSRight.SetActive(true);
+            switch (controllerState)
+            {
+                case ControllerState.UIInteraction:
+                    uiInteractorController.EnableControllerUIInteractor();
+                    break;
+                case ControllerState.SoftPatchInteraction:
+                    softPatchController.EnableControllerSPS();
+                    break;
+                default:
+                    break;
+            }
         }
 
         protected override void Update()

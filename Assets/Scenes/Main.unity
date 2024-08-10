@@ -62362,6 +62362,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Controller_API_Provider_R
       objectReference: {fileID: 0}
+    - target: {fileID: 4741242849064222744, guid: b1b9478c801e4614e8e73aaeedc9f1ad,
+        type: 3}
+      propertyPath: controllerState
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5361495156026804322, guid: b1b9478c801e4614e8e73aaeedc9f1ad,
         type: 3}
       propertyPath: _handGrabApi
@@ -62438,7 +62443,6 @@ PrefabInstance:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
-    - {fileID: 5470128988727625461, guid: b1b9478c801e4614e8e73aaeedc9f1ad, type: 3}
     m_RemovedGameObjects:
     - {fileID: 1847918397640847675, guid: b1b9478c801e4614e8e73aaeedc9f1ad, type: 3}
     m_AddedGameObjects: []

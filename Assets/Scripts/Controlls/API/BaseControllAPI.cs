@@ -20,7 +20,7 @@ namespace VoodooMagic.Scripts.Controlls.API
     protected bool isPinching = false;
     protected bool isGrabbing = false;
 
-    protected void Awake()
+    protected virtual void Awake()
     {
       controllManager = GameObject.FindWithTag("ControllSystem").GetComponent<ControllManager>();
       raycastSource = softPatchSpawner.RaycastSource;

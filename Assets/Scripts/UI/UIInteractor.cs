@@ -6,10 +6,14 @@ namespace VoodooMagic.Scripts.UI
     public class UIInteractor : MonoBehaviour
     {
         private UIInteractable highlightedUIElement;
+        private bool isActive = false;
 
         public void OnUpdate(Transform raycastSource, RaycastDirection raycastDirection)
         {
+            if (!isActive) return;
+
             RaycastHit hit;
+
             if (Physics.Raycast(raycastSource.position, Util.GetRayDirection(raycastSource, raycastDirection), out hit))
             {
                 if (hit.collider.gameObject.TryGetComponent(out UIInteractable interactable))
@@ -35,6 +39,12 @@ namespace VoodooMagic.Scripts.UI
         public void OnGrab()
         {
             if (highlightedUIElement != null) highlightedUIElement.OnGrab();
+        }
+
+        public void SetIsActive(bool value)
+        {
+            if (!isActive) RemoveHighlight();
+            isActive = value;
         }
 
         private void RemoveHighlight()

@@ -37,6 +37,9 @@ namespace VoodooMagic.Scripts.Controlls
     [Header("SoftPatch Controller")]
     [SerializeField] private SoftPatchController softPatchController;
 
+    [Header("UI Interactor Controller")]
+    [SerializeField] private UIInteractorController uiInteractorController;
+
     /// <summary>
     /// The current controller state.
     /// </summary>
@@ -61,10 +64,7 @@ namespace VoodooMagic.Scripts.Controlls
         return;
       }
 
-      if (controllerState == ControllerState.SoftPatchInteraction)
-      {
-        softPatchController.EnableSPS();
-      }
+      SetControllerState(controllerState);
     }
 
     /// <summary>
@@ -132,18 +132,32 @@ namespace VoodooMagic.Scripts.Controlls
       }
     }
 
+    /// <summary>
+    /// Sets the controller state.
+    /// </summary>
+    /// <param name="state">The new controller state.</param>
+    /// <returns></returns>
     public void SetControllerState(ControllerState state)
     {
       switch (state)
       {
         case ControllerState.SoftPatchInteraction:
           softPatchController.EnableSPS();
+          uiInteractorController.DisableUIInteractor();
+          handTrackingAPILeft.controllerState = state;
+          handTrackingAPIRight.controllerState = state;
           break;
         case ControllerState.UIInteraction:
           softPatchController.DisableSPS();
+          uiInteractorController.EnableUIInteractor();
+          handTrackingAPILeft.controllerState = state;
+          handTrackingAPIRight.controllerState = state;
           break;
         case ControllerState.Idle:
           softPatchController.DisableSPS();
+          uiInteractorController.DisableUIInteractor();
+          handTrackingAPILeft.controllerState = state;
+          handTrackingAPIRight.controllerState = state;
           break;
         default:
           break;

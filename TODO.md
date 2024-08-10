@@ -1,2 +1,3 @@
 # Todos
-1. Add an Animator for the NPC, with which the UI helper can set the talking animation state or idle state.
+
+1. Fix UIInteractor still raycasting from controller if hands are active (How did I do it with SoftPatchSpawner, debug if that even does it there (?))
