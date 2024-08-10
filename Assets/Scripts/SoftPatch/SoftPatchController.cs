@@ -4,7 +4,7 @@ using VoodooMagic.Scripts.Constants;
 
 namespace VoodooMagic.Scripts.SoftPatch
 {
-  public class SoftPatchManager : MonoBehaviour
+  public class SoftPatchController : MonoBehaviour
   {
     [Header("Prefabs")]
     [SerializeField] private GameObject softPatchPrefab;
@@ -65,34 +65,26 @@ namespace VoodooMagic.Scripts.SoftPatch
 
     public void EnableHandTrackingSPS()
     {
-      spsHandLeft.gameObject.SetActive(true);
-      spsHandLeft.enabled = true;
-      spsHandRight.gameObject.SetActive(true);
-      spsHandRight.enabled = true;
+      spsHandLeft.SetIsActive(true);
+      spsHandRight.SetIsActive(true);
     }
 
     public void EnableControllerSPS()
     {
-      spsControllerLeft.gameObject.SetActive(true);
-      spsControllerLeft.enabled = true;
-      spsControllerRight.gameObject.SetActive(true);
-      spsControllerRight.enabled = true;
+      spsControllerLeft.SetIsActive(true);
+      spsControllerRight.SetIsActive(true);
     }
 
     public void DisableHandTrackingSPS()
     {
-      spsHandLeft.gameObject.SetActive(false);
-      spsHandLeft.enabled = false;
-      spsHandRight.gameObject.SetActive(false);
-      spsHandRight.enabled = false;
+      spsHandLeft.SetIsActive(false);
+      spsHandRight.SetIsActive(false);
     }
 
     public void DisableControllerSPS()
     {
-      spsControllerLeft.gameObject.SetActive(false);
-      spsControllerLeft.enabled = false;
-      spsControllerRight.gameObject.SetActive(false);
-      spsControllerRight.enabled = false;
+      spsControllerLeft.SetIsActive(false);
+      spsControllerRight.SetIsActive(false);
     }
 
     public void SetActive(bool isHandTracking)

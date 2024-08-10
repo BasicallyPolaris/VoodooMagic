@@ -1,5 +1,6 @@
 using UnityEngine;
 using VoodooMagic.Scripts.Constants;
+using VoodooMagic.Scripts.Raycast;
 
 namespace VoodooMagic.Scripts.SoftPatch
 {
@@ -11,11 +12,11 @@ namespace VoodooMagic.Scripts.SoftPatch
     [Header("Spawn Location")]
     [Tooltip("Consider taking the root game object of the component the script is on.")]
     [SerializeField] private Transform raycastSource;
-    [SerializeField] protected Transform spawnLocation;
-    [SerializeField] private RayDirection rayDirection = RayDirection.Forward;
+    [SerializeField] protected GameObject softpatchPreview;
+    [SerializeField] private RaycastDirection raycastDirection = RaycastDirection.Forward;
 
     public Transform RaycastSource { get => raycastSource; private set => raycastSource = value; }
-    public RayDirection RayDirection { get => rayDirection; private set => rayDirection = value; }
+    public RaycastDirection RayDirection { get => raycastDirection; private set => raycastDirection = value; }
 
     private Material highlightMaterial;
     private float rayLength = 10f;
@@ -23,13 +24,14 @@ namespace VoodooMagic.Scripts.SoftPatch
     private GameObject softPatchPrefab;
     private Material originalMaterial;
     private GameObject highlightedObject;
+    private bool isActive = false;
 
     private void Awake()
     {
       container = GameObject.FindWithTag("SoftPatchSystem");
-      softPatchPrefab = container.GetComponent<SoftPatchManager>().getSoftPatchPrefab();
-      highlightMaterial = container.GetComponent<SoftPatchManager>().getHighlightMaterial();
-      rayLength = container.GetComponent<SoftPatchManager>().getRayLength();
+      softPatchPrefab = container.GetComponent<SoftPatchController>().getSoftPatchPrefab();
+      highlightMaterial = container.GetComponent<SoftPatchController>().getHighlightMaterial();
+      rayLength = container.GetComponent<SoftPatchController>().getRayLength();
     }
 
     private void OnDisable()
@@ -39,12 +41,26 @@ namespace VoodooMagic.Scripts.SoftPatch
 
     private void Update()
     {
-      HighlightCushionInRange();
+      if (isActive) HighlightCushionInRange();
+    }
+
+    public void SetIsActive(bool value)
+    {
+      if (value)
+      {
+        EnablePreview();
+      }
+      else
+      {
+        DisablePreview();
+      }
+
+      isActive = value;
     }
 
     public void SpawnSoftPatch()
     {
-      GameObject softPatch = Instantiate(softPatchPrefab, spawnLocation.transform.position, spawnLocation.transform.rotation);
+      GameObject softPatch = Instantiate(softPatchPrefab, softpatchPreview.transform.position, softpatchPreview.transform.rotation);
       softPatch.transform.SetParent(container.transform);
     }
 
@@ -56,6 +72,17 @@ namespace VoodooMagic.Scripts.SoftPatch
         highlightedObject = null;
         originalMaterial = null;
       }
+    }
+
+    private void EnablePreview()
+    {
+      softpatchPreview.SetActive(true);
+    }
+
+    private void DisablePreview()
+    {
+      softpatchPreview.SetActive(false);
+      RemoveHighlight();
     }
 
     private void RemoveHighlight()
@@ -70,8 +97,8 @@ namespace VoodooMagic.Scripts.SoftPatch
     private void HighlightCushionInRange()
     {
       RaycastHit hit;
-      Vector3 rayOrigin = raycastSource.position - Util.GetRayDirection(this.rayDirection, raycastSource) * 0.1f;
-      Vector3 rayDirection = Util.GetRayDirection(this.rayDirection, raycastSource);
+      Vector3 rayOrigin = raycastSource.position - Util.GetRayDirection(raycastSource, raycastDirection) * 0.1f;
+      Vector3 rayDirection = Util.GetRayDirection(raycastSource, raycastDirection);
 
       if (Physics.Raycast(rayOrigin, rayDirection, out hit, rayLength))
       {

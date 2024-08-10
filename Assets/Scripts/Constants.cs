@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace VoodooMagic.Scripts.Constants
 {
-  public enum RayDirection
+  public enum RaycastDirection
   {
     Forward,
     Up,
@@ -14,21 +14,21 @@ namespace VoodooMagic.Scripts.Constants
 
   public static class Util
   {
-    public static Vector3 GetRayDirection(RayDirection rayDirection, Transform raycastSource)
+    public static Vector3 GetRayDirection(Transform raycastSource, RaycastDirection raycastDirection)
     {
-      switch (rayDirection)
+      switch (raycastDirection)
       {
-        case RayDirection.Forward:
+        case RaycastDirection.Forward:
           return raycastSource.forward;
-        case RayDirection.Up:
+        case RaycastDirection.Up:
           return raycastSource.up;
-        case RayDirection.Down:
+        case RaycastDirection.Down:
           return -raycastSource.up;
-        case RayDirection.Left:
+        case RaycastDirection.Left:
           return -raycastSource.right;
-        case RayDirection.Right:
+        case RaycastDirection.Right:
           return raycastSource.right;
-        case RayDirection.Backward:
+        case RaycastDirection.Backward:
           return -raycastSource.forward;
         default:
           return raycastSource.forward;

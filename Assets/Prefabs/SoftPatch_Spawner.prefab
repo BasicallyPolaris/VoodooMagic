@@ -47,8 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isHandTracking: 0
   raycastSource: {fileID: 9160326565063231402}
-  spawnLocation: {fileID: 4413432181530548669}
-  rayDirection: 0
+  softpatchPreview: {fileID: 7801784401902199992}
+  raycastDirection: 0
 --- !u!1 &7801784401902199992
 GameObject:
   m_ObjectHideFlags: 0

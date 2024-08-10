@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9160326565063231402}
   - component: {fileID: -4690973706357081954}
+  - component: {fileID: 2633652038846214640}
   m_Layer: 0
   m_Name: Controller_API_Provider
   m_TagString: Untagged
@@ -44,55 +45,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47bdecc818bb44f44a672b331b86acf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateActions:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VoodooMagic.Scripts.SoftPatchSpawner.SoftPatchSpawner,
-          Assembly-CSharp
-        m_MethodName: HighlightCushionInRange
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  pinchActions:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VoodooMagic.Scripts.SoftPatchSpawner.SoftPatchSpawner,
-          Assembly-CSharp
-        m_MethodName: SpawnSoftPatch
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  grabActions:
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: VoodooMagic.Scripts.SoftPatchSpawner.SoftPatchSpawner,
-          Assembly-CSharp
-        m_MethodName: DeleteHighlightedObject
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+  softPatchSpawner: {fileID: 0}
+  uiInteractor: {fileID: 2633652038846214640}
   pinchAction: {fileID: 8429157816736509786, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   grabAction: {fileID: -741667397773074983, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
+--- !u!114 &2633652038846214640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3344228701464914322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c45f44a07b43e4ca5f7cd84400ae3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

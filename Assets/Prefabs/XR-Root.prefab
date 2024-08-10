@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7743930607533117162}
   m_Layer: 0
   m_Name: SoftPatch-Container
-  m_TagString: Untagged
+  m_TagString: SoftPatchSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,7 +65,7 @@ GameObject:
   - component: {fileID: 4741242849064222744}
   m_Layer: 0
   m_Name: Controll-System
-  m_TagString: Untagged
+  m_TagString: ControllSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,52 @@ MonoBehaviour:
   handTrackingAPIRight: {fileID: 7214598506763043961}
   controllerAPILeft: {fileID: 7163606557015110282}
   controllerAPIRight: {fileID: 3099584103855199908}
+  softPatchController: {fileID: 7743930607533117162}
   controllerState: 1
+--- !u!1 &6212934122184629504
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 107722961056980247}
+  - component: {fileID: 5470128988727625461}
+  m_Layer: 0
+  m_Name: UI-System
+  m_TagString: UISystem
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &107722961056980247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212934122184629504}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2329502067674881766}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5470128988727625461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6212934122184629504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c45f44a07b43e4ca5f7cd84400ae3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7019675036342860079
 GameObject:
   m_ObjectHideFlags: 0
@@ -113,7 +158,7 @@ GameObject:
   - component: {fileID: 2844376825961805244}
   m_Layer: 0
   m_Name: Game-System
-  m_TagString: Untagged
+  m_TagString: GameSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1016,6 +1061,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2844376825961805244}
+    - targetCorrespondingSourceObject: {fileID: 2514675399181695721, guid: ce61dc20b15eeff4e9712e79d49d16ad,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 107722961056980247}
     - targetCorrespondingSourceObject: {fileID: 2583935671885064353, guid: ce61dc20b15eeff4e9712e79d49d16ad,
         type: 3}
       insertIndex: -1
@@ -1191,6 +1240,11 @@ PrefabInstance:
     - target: {fileID: 8073734400728135183, guid: cf98f7b040f84684ca940ef2a4a88474,
         type: 3}
       propertyPath: isHandTracking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073734400728135183, guid: cf98f7b040f84684ca940ef2a4a88474,
+        type: 3}
+      propertyPath: raycastDirection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9160326565063231402, guid: cf98f7b040f84684ca940ef2a4a88474,
@@ -1436,6 +1490,11 @@ PrefabInstance:
     - target: {fileID: 8073734400728135183, guid: cf98f7b040f84684ca940ef2a4a88474,
         type: 3}
       propertyPath: rayDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073734400728135183, guid: cf98f7b040f84684ca940ef2a4a88474,
+        type: 3}
+      propertyPath: raycastDirection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9160326565063231402, guid: cf98f7b040f84684ca940ef2a4a88474,
@@ -1698,6 +1757,11 @@ PrefabInstance:
     - target: {fileID: 8073734400728135183, guid: cf98f7b040f84684ca940ef2a4a88474,
         type: 3}
       propertyPath: rayDirection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073734400728135183, guid: cf98f7b040f84684ca940ef2a4a88474,
+        type: 3}
+      propertyPath: raycastDirection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9160326565063231402, guid: cf98f7b040f84684ca940ef2a4a88474,
@@ -2125,6 +2189,11 @@ PrefabInstance:
     - target: {fileID: 8073734400728135183, guid: cf98f7b040f84684ca940ef2a4a88474,
         type: 3}
       propertyPath: isHandTracking
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073734400728135183, guid: cf98f7b040f84684ca940ef2a4a88474,
+        type: 3}
+      propertyPath: raycastDirection
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9160326565063231402, guid: cf98f7b040f84684ca940ef2a4a88474,
