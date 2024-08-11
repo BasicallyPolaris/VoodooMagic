@@ -102,7 +102,7 @@ MonoBehaviour:
   controllerAPILeft: {fileID: 7163606557015110282}
   controllerAPIRight: {fileID: 3099584103855199908}
   softPatchController: {fileID: 7743930607533117162}
-  uiInteractorController: {fileID: 4785881316666273714}
+  rayInteractionController: {fileID: 4785881316666273714}
   controllerState: 1
 --- !u!1 &6212934122184629504
 GameObject:

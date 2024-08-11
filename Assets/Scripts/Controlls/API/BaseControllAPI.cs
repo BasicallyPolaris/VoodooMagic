@@ -2,7 +2,7 @@
 using UnityEngine;
 using VoodooMagic.Scripts.Constants;
 using VoodooMagic.Scripts.SoftPatch;
-using VoodooMagic.Scripts.UI;
+using VoodooMagic.Scripts.RayInteraction;
 
 namespace VoodooMagic.Scripts.Controlls.API
 {
@@ -11,8 +11,8 @@ namespace VoodooMagic.Scripts.Controlls.API
     [Header("SoftPatchSpawner")]
     [SerializeField] public SoftPatchSpawner softPatchSpawner;
     
-    [Header("UIInteractor")]
-    [SerializeField] public UIInteractor uiInteractor;
+    [Header("RayInteractor")]
+    [SerializeField] public RayInteractor rayInteractor;
 
     protected ControllManager controllManager;
     protected Transform raycastSource;
@@ -29,17 +29,17 @@ namespace VoodooMagic.Scripts.Controlls.API
 
     protected virtual void Update()
     {
-      controllManager.OnUpdate(raycastSource, raycastDirection, uiInteractor);
+      controllManager.OnUpdate(raycastSource, raycastDirection, rayInteractor);
     }
 
     protected void OnPinch()
     {
-      controllManager.OnPinch(softPatchSpawner, uiInteractor);
+      controllManager.OnPinch(softPatchSpawner, rayInteractor);
     }
 
     protected void OnGrab()
     {
-      controllManager.OnGrab(softPatchSpawner, uiInteractor);
+      controllManager.OnGrab(softPatchSpawner, rayInteractor);
     }
   }
 }

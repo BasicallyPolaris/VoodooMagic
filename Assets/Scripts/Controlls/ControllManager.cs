@@ -2,8 +2,7 @@ using UnityEngine;
 using VoodooMagic.Scripts.Controlls.API;
 using VoodooMagic.Scripts.SoftPatch;
 using VoodooMagic.Scripts.Constants;
-using VoodooMagic.Scripts.UI;
-using System.Collections;
+using VoodooMagic.Scripts.RayInteraction;
 
 namespace VoodooMagic.Scripts.Controlls
 {
@@ -38,7 +37,7 @@ namespace VoodooMagic.Scripts.Controlls
     [SerializeField] private SoftPatchController softPatchController;
 
     [Header("UI Interactor Controller")]
-    [SerializeField] private UIInteractorController uiInteractorController;
+    [SerializeField] private RayInteractionController rayInteractionController;
 
     /// <summary>
     /// The current controller state.
@@ -70,14 +69,14 @@ namespace VoodooMagic.Scripts.Controlls
     /// <summary>
     /// Called every frame.
     /// </summary>
-    public void OnUpdate(Transform raycastSource, RaycastDirection raycastDirection, UIInteractor uiInteractor)
+    public void OnUpdate(Transform raycastSource, RaycastDirection raycastDirection, RayInteractor rayInteractor)
     {
       switch (controllerState)
       {
         case ControllerState.SoftPatchInteraction:
           break;
-        case ControllerState.UIInteraction:
-          uiInteractor.OnUpdate(raycastSource, raycastDirection);
+        case ControllerState.RayInteraction:
+          rayInteractor.OnUpdate(raycastSource, raycastDirection);
           break;
         case ControllerState.Idle:
           break;
@@ -92,15 +91,15 @@ namespace VoodooMagic.Scripts.Controlls
     /// <param name="raycastSource">The root transform used for raycasting.</param>
     /// <param name="rayDirection">The direction of the raycast.</param>
     /// <param name="spawner">The SoftPatchSpawner component used for spawning soft patches.</param>
-    public void OnPinch(SoftPatchSpawner spawner, UIInteractor uiInteractor)
+    public void OnPinch(SoftPatchSpawner spawner, RayInteractor rayInteractor)
     {
       switch (controllerState)
       {
         case ControllerState.SoftPatchInteraction:
           spawner.SpawnSoftPatch();
           break;
-        case ControllerState.UIInteraction:
-          uiInteractor.OnPinch();
+        case ControllerState.RayInteraction:
+          rayInteractor.OnPinch();
           break;
         case ControllerState.Idle:
           break;
@@ -115,15 +114,15 @@ namespace VoodooMagic.Scripts.Controlls
     /// <param name="raycastSource">The root transform used for raycasting.</param>
     /// <param name="raycastDirection">The direction of the raycast.</param>
     /// <param name="spawner">The SoftPatchSpawner component used for spawning soft patches.</param>
-    public void OnGrab(SoftPatchSpawner spawner, UIInteractor uiInteractor)
+    public void OnGrab(SoftPatchSpawner spawner, RayInteractor rayInteractor)
     {
       switch (controllerState)
       {
         case ControllerState.SoftPatchInteraction:
           spawner.DeleteHighlightedObject();
           break;
-        case ControllerState.UIInteraction:
-          uiInteractor.OnGrab();
+        case ControllerState.RayInteraction:
+          rayInteractor.OnGrab();
           break;
         case ControllerState.Idle:
           break;
@@ -143,19 +142,19 @@ namespace VoodooMagic.Scripts.Controlls
       {
         case ControllerState.SoftPatchInteraction:
           softPatchController.EnableSPS();
-          uiInteractorController.DisableUIInteractor();
+          rayInteractionController.DisableRayInteraction();
           handTrackingAPILeft.controllerState = state;
           handTrackingAPIRight.controllerState = state;
           break;
-        case ControllerState.UIInteraction:
+        case ControllerState.RayInteraction:
           softPatchController.DisableSPS();
-          uiInteractorController.EnableUIInteractor();
+          rayInteractionController.EnableRayInteraction();
           handTrackingAPILeft.controllerState = state;
           handTrackingAPIRight.controllerState = state;
           break;
         case ControllerState.Idle:
           softPatchController.DisableSPS();
-          uiInteractorController.DisableUIInteractor();
+          rayInteractionController.DisableRayInteraction();
           handTrackingAPILeft.controllerState = state;
           handTrackingAPIRight.controllerState = state;
           break;

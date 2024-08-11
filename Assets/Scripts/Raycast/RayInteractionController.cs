@@ -1,20 +1,19 @@
 using UnityEngine;
 
-namespace VoodooMagic.Scripts.UI
+namespace VoodooMagic.Scripts.RayInteraction
 {
-
-  public class UIInteractorController : MonoBehaviour
+  public class RayInteractionController : MonoBehaviour
   {
 
-    [Header("Hand - UI Interactor")]
-    [SerializeField] private UIInteractor leftHand;
-    [SerializeField] private UIInteractor rightHand;
+    [Header("Hand - Ray Interactor")]
+    [SerializeField] private RayInteractor leftHand;
+    [SerializeField] private RayInteractor rightHand;
 
-    [Header("Controller - UI Interactor")]
-    [SerializeField] private UIInteractor leftController;
-    [SerializeField] private UIInteractor rightController;
+    [Header("Controller -  Interactor")]
+    [SerializeField] private RayInteractor leftController;
+    [SerializeField] private RayInteractor rightController;
 
-    public void DisableUIInteractor()
+    public void DisableRayInteraction()
     {
       leftHand.SetIsActive(false);
       rightHand.SetIsActive(false);
@@ -22,7 +21,7 @@ namespace VoodooMagic.Scripts.UI
       rightController.SetIsActive(false);
     }
 
-    public void EnableUIInteractor()
+    public void EnableRayInteraction()
     {
       leftHand.SetIsActive(true);
       rightHand.SetIsActive(true);
@@ -30,25 +29,25 @@ namespace VoodooMagic.Scripts.UI
       rightController.SetIsActive(true);
     }
 
-    public void DisableHandUIInteractor()
+    public void DisableHandRayInteraction()
     {
       leftHand.SetIsActive(false);
       rightHand.SetIsActive(false);
     }
 
-    public void EnableHandUIInteractor()
+    public void EnableHandRayInteraction()
     {
       leftHand.SetIsActive(true);
       rightHand.SetIsActive(true);
     }
 
-    public void DisableControllerUIInteractor()
+    public void DisableControllerRayInteraction()
     {
       leftController.SetIsActive(false);
       rightController.SetIsActive(false);
     }
 
-    public void EnableControllerUIInteractor()
+    public void EnableControllerRayInteraction()
     {
       leftController.SetIsActive(true);
       rightController.SetIsActive(true);

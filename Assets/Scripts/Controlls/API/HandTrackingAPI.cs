@@ -4,7 +4,7 @@ using Oculus.Interaction.GrabAPI;
 using Unity.VisualScripting;
 using UnityEngine;
 using VoodooMagic.Scripts.SoftPatch;
-using VoodooMagic.Scripts.UI;
+using VoodooMagic.Scripts.RayInteraction;
 
 namespace VoodooMagic.Scripts.Controlls.API
 {
@@ -15,12 +15,12 @@ namespace VoodooMagic.Scripts.Controlls.API
 
         public ControllerState controllerState { private get; set; }
         private SoftPatchController softPatchController;
-        private UIInteractorController uiInteractorController;
+        private RayInteractionController rayInteractionController;
 
         protected override void Awake()
         {
             softPatchController = GameObject.FindWithTag("SoftPatchSystem").GetComponent<SoftPatchController>();
-            uiInteractorController = GameObject.FindWithTag("UISystem").GetComponent<UIInteractorController>();
+            rayInteractionController = GameObject.FindWithTag("RaySystem").GetComponent<RayInteractionController>();
             base.Awake();
         }
 
@@ -34,8 +34,8 @@ namespace VoodooMagic.Scripts.Controlls.API
 
             switch (controllerState)
             {
-                case ControllerState.UIInteraction:
-                    uiInteractorController.DisableControllerUIInteractor();
+                case ControllerState.RayInteraction:
+                    rayInteractionController.DisableControllerRayInteraction();
                     break;
                 case ControllerState.SoftPatchInteraction:
                     softPatchController.DisableControllerSPS();
@@ -49,8 +49,8 @@ namespace VoodooMagic.Scripts.Controlls.API
         {
             switch (controllerState)
             {
-                case ControllerState.UIInteraction:
-                    uiInteractorController.EnableControllerUIInteractor();
+                case ControllerState.RayInteraction:
+                    rayInteractionController.EnableControllerRayInteraction();
                     break;
                 case ControllerState.SoftPatchInteraction:
                     softPatchController.EnableControllerSPS();

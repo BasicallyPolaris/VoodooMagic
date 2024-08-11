@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   softPatchSpawner: {fileID: 0}
-  uiInteractor: {fileID: 2633652038846214640}
+  rayInteractor: {fileID: 2633652038846214640}
   pinchAction: {fileID: 8429157816736509786, guid: c348712bda248c246b8c49b3db54643f,
     type: 3}
   grabAction: {fileID: -741667397773074983, guid: c348712bda248c246b8c49b3db54643f,

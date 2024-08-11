@@ -1,6 +1,6 @@
 using UnityEngine;
 using VoodooMagic.Scripts.Constants;
-using VoodooMagic.Scripts.Raycast;
+using VoodooMagic.Scripts.RayInteraction;
 
 namespace VoodooMagic.Scripts.SoftPatch
 {

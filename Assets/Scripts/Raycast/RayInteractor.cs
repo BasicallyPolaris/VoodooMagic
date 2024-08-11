@@ -1,11 +1,12 @@
 using UnityEngine;
 using VoodooMagic.Scripts.Constants;
+using VoodooMagic.Scripts.RayInteraction.Interactables;
 
-namespace VoodooMagic.Scripts.UI
+namespace VoodooMagic.Scripts.RayInteraction
 {
-    public class UIInteractor : MonoBehaviour
+    public class RayInteractor : MonoBehaviour
     {
-        private UIInteractable highlightedUIElement;
+        private RayInteractable focusedElement;
         private bool isActive = false;
 
         public void OnUpdate(Transform raycastSource, RaycastDirection raycastDirection)
@@ -14,15 +15,17 @@ namespace VoodooMagic.Scripts.UI
 
             RaycastHit hit;
 
+            Debug.DrawRay(raycastSource.position, Util.GetRayDirection(raycastSource, raycastDirection) * 10, Color.red);
+
             if (Physics.Raycast(raycastSource.position, Util.GetRayDirection(raycastSource, raycastDirection), out hit))
             {
-                if (hit.collider.gameObject.TryGetComponent(out UIInteractable interactable))
+                if (hit.collider.gameObject.TryGetComponent(out RayInteractable interactable))
                 {
-                    if (highlightedUIElement != interactable)
+                    if (focusedElement != interactable)
                     {
                         RemoveHighlight();
-                        highlightedUIElement = interactable;
-                        highlightedUIElement.highlight();
+                        focusedElement = interactable;
+                        focusedElement.highlight();
                     }
                     return;
                 }
@@ -33,12 +36,12 @@ namespace VoodooMagic.Scripts.UI
 
         public void OnPinch()
         {
-            if (highlightedUIElement != null) highlightedUIElement.OnPinch();
+            if (focusedElement != null) focusedElement.OnPinch();
         }
 
         public void OnGrab()
         {
-            if (highlightedUIElement != null) highlightedUIElement.OnGrab();
+            if (focusedElement != null) focusedElement.OnGrab();
         }
 
         public void SetIsActive(bool value)
@@ -49,10 +52,10 @@ namespace VoodooMagic.Scripts.UI
 
         private void RemoveHighlight()
         {
-            if (highlightedUIElement != null)
+            if (focusedElement != null)
             {
-                highlightedUIElement.removeHighlight();
-                highlightedUIElement = null;
+                focusedElement.removeHighlight();
+                focusedElement = null;
             }
         }
     }

@@ -1,6 +1,6 @@
 namespace VoodooMagic.Scripts.Controlls {
   public enum ControllerState {
-    UIInteraction,
+    RayInteraction,
     SoftPatchInteraction,
     Idle,
   }

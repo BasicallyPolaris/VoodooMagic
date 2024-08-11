@@ -1,7 +1,7 @@
 using UnityEngine;
 using VoodooMagic.Scripts.Constants;
 
-namespace VoodooMagic.Scripts.Raycast
+namespace VoodooMagic.Scripts.RayInteraction
 {
   public class RaycastAPI : MonoBehaviour
   {
