@@ -60,6 +60,11 @@ namespace VoodooMagic.Scripts.SoftPatch
 
     public void SpawnSoftPatch()
     {
+      if (highlightedObject != null)
+      {
+        return;
+      }
+      
       GameObject softPatch = Instantiate(softPatchPrefab, softpatchPreview.transform.position, softpatchPreview.transform.rotation);
       softPatch.transform.SetParent(container.transform);
     }

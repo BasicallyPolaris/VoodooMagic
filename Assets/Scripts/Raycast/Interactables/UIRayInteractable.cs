@@ -9,8 +9,12 @@ namespace VoodooMagic.Scripts.RayInteraction.Interactables
     [Header("Image Highlight")]
     [SerializeField] private Image image;
 
-    [Header("Highlight Color")]
-    [SerializeField] private Color highlightColor;
+    [Header("Hover Color")]
+    [SerializeField] private Color hoverColor;
+
+    [Header("Press Color")]
+    [SerializeField] private Color pressColor;
+
     private Color originalColor;
 
     private void Start()
@@ -18,14 +22,21 @@ namespace VoodooMagic.Scripts.RayInteraction.Interactables
       originalColor = gameObject.GetComponent<Image>().color;
     }
 
-    public override void highlight()
+    public override void OnHover()
     {
-      gameObject.GetComponent<Image>().color = highlightColor;
+      gameObject.GetComponent<Image>().color = hoverColor;
     }
 
-    public override void removeHighlight()
+    public override void RemoveHover()
     {
+      base.RemoveHover();
       gameObject.GetComponent<Image>().color = originalColor;
+    }
+
+    protected override void OnPressed()
+    {
+      base.OnPressed();
+      gameObject.GetComponent<Image>().color = pressColor;
     }
   }
 }

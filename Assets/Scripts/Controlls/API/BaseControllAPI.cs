@@ -29,7 +29,7 @@ namespace VoodooMagic.Scripts.Controlls.API
 
     protected virtual void Update()
     {
-      controllManager.OnUpdate(raycastSource, raycastDirection, rayInteractor);
+      controllManager.OnUpdate();
     }
 
     protected void OnPinch()

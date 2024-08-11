@@ -12,10 +12,14 @@ namespace VoodooMagic.Scripts.RayInteraction.Interactables
     [Header("Actions")]
     [SerializeField] private UnityEvent[] pinchActions;
     [SerializeField] private UnityEvent[] grabActions;
-
+    protected bool wasPressed = false;
+    protected bool isHighlighted = false;
 
     public void OnPinch()
     {
+      if (wasPressed) return;
+      OnPressed();
+
       foreach (UnityEvent action in pinchActions)
       {
         action.Invoke();
@@ -24,13 +28,23 @@ namespace VoodooMagic.Scripts.RayInteraction.Interactables
 
     public void OnGrab()
     {
+      if (wasPressed) return;
+      OnPressed();
+
       foreach (UnityEvent action in grabActions)
       {
         action.Invoke();
       }
     }
-    public abstract void highlight();
 
-    public abstract void removeHighlight();
+    public abstract void OnHover();
+
+    public virtual void RemoveHover() {
+      wasPressed = false;
+    }
+
+    protected virtual void OnPressed() {
+      wasPressed = true;
+    }
   }
 }

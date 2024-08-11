@@ -196,6 +196,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 257079164048115666, guid: ce61dc20b15eeff4e9712e79d49d16ad,
+        type: 3}
+      propertyPath: _maxIterationsPerFrame
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 257079165080421306, guid: ce61dc20b15eeff4e9712e79d49d16ad,
+        type: 3}
+      propertyPath: _maxIterationsPerFrame
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1386538511577906303, guid: ce61dc20b15eeff4e9712e79d49d16ad,
         type: 3}
       propertyPath: m_IsActive
@@ -1132,6 +1142,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 194189395919627279}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &2678691874036871192 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2854514889930478615, guid: ce61dc20b15eeff4e9712e79d49d16ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 194189395919627279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2880308052662883550 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2686694955732496593, guid: ce61dc20b15eeff4e9712e79d49d16ad,
@@ -1182,6 +1198,12 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &3254788807156436537 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3430250977152068150, guid: ce61dc20b15eeff4e9712e79d49d16ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 194189395919627279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3635981475810664771 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3514074180741465420, guid: ce61dc20b15eeff4e9712e79d49d16ad,
@@ -1200,9 +1222,45 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 194189395919627279}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6027085011148245339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5842690271317159252, guid: ce61dc20b15eeff4e9712e79d49d16ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 194189395919627279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6027085011610235760 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5842690271526262655, guid: ce61dc20b15eeff4e9712e79d49d16ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 194189395919627279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6027085012303170867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5842690272475392316, guid: ce61dc20b15eeff4e9712e79d49d16ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 194189395919627279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6027085012646508312 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5842690272534713111, guid: ce61dc20b15eeff4e9712e79d49d16ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 194189395919627279}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6040375523742958115 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5864354887466624556, guid: ce61dc20b15eeff4e9712e79d49d16ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 194189395919627279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7332347799539012482 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7453559928390432653, guid: ce61dc20b15eeff4e9712e79d49d16ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 194189395919627279}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7910095851281231267 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8032073721169004972, guid: ce61dc20b15eeff4e9712e79d49d16ad,
     type: 3}
   m_PrefabInstance: {fileID: 194189395919627279}
   m_PrefabAsset: {fileID: 0}
@@ -1338,6 +1396,16 @@ PrefabInstance:
       propertyPath: softPatchSpawner
       value: 
       objectReference: {fileID: 7641106350306255619}
+    - target: {fileID: 2633652038846214640, guid: 2935a7d75fdadf74a878341e47662cb0,
+        type: 3}
+      propertyPath: raycastSource
+      value: 
+      objectReference: {fileID: 2678691874036871192}
+    - target: {fileID: 2633652038846214640, guid: 2935a7d75fdadf74a878341e47662cb0,
+        type: 3}
+      propertyPath: MetaRayHandInteractor
+      value: 
+      objectReference: {fileID: 3254788807156436537}
     - target: {fileID: 3344228701464914322, guid: 2935a7d75fdadf74a878341e47662cb0,
         type: 3}
       propertyPath: m_Name
@@ -1696,6 +1764,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand_API_Provider_L
       objectReference: {fileID: 0}
+    - target: {fileID: 6408512788386276203, guid: 3d1a5b7e5e082c442bd8fd157b7e706e,
+        type: 3}
+      propertyPath: raycastSource
+      value: 
+      objectReference: {fileID: 6027085011610235760}
+    - target: {fileID: 6408512788386276203, guid: 3d1a5b7e5e082c442bd8fd157b7e706e,
+        type: 3}
+      propertyPath: MetaRayHandInteractor
+      value: 
+      objectReference: {fileID: 6027085011148245339}
     - target: {fileID: 7284262910268576831, guid: 3d1a5b7e5e082c442bd8fd157b7e706e,
         type: 3}
       propertyPath: container
@@ -1897,6 +1975,16 @@ PrefabInstance:
       propertyPath: softPatchSpawner
       value: 
       objectReference: {fileID: 4433783387377705788}
+    - target: {fileID: 2633652038846214640, guid: 2935a7d75fdadf74a878341e47662cb0,
+        type: 3}
+      propertyPath: raycastSource
+      value: 
+      objectReference: {fileID: 7910095851281231267}
+    - target: {fileID: 2633652038846214640, guid: 2935a7d75fdadf74a878341e47662cb0,
+        type: 3}
+      propertyPath: MetaRayHandInteractor
+      value: 
+      objectReference: {fileID: 7332347799539012482}
     - target: {fileID: 3344228701464914322, guid: 2935a7d75fdadf74a878341e47662cb0,
         type: 3}
       propertyPath: m_Name
@@ -2149,9 +2237,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6408512788386276203, guid: 3d1a5b7e5e082c442bd8fd157b7e706e,
         type: 3}
+      propertyPath: raycastSource
+      value: 
+      objectReference: {fileID: 6027085012646508312}
+    - target: {fileID: 6408512788386276203, guid: 3d1a5b7e5e082c442bd8fd157b7e706e,
+        type: 3}
       propertyPath: isHandTracking
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6408512788386276203, guid: 3d1a5b7e5e082c442bd8fd157b7e706e,
+        type: 3}
+      propertyPath: MetaRayHandInteractor
+      value: 
+      objectReference: {fileID: 6027085012303170867}
     - target: {fileID: 7284262910268576831, guid: 3d1a5b7e5e082c442bd8fd157b7e706e,
         type: 3}
       propertyPath: container

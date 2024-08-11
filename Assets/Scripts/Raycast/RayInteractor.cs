@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using VoodooMagic.Scripts.Constants;
 using VoodooMagic.Scripts.RayInteraction.Interactables;
@@ -6,16 +7,22 @@ namespace VoodooMagic.Scripts.RayInteraction
 {
     public class RayInteractor : MonoBehaviour
     {
+
+        [Header("Spawn Location")]
+        [Tooltip("Consider taking the root game object of the component the script is on.")]
+        [SerializeField] private Transform raycastSource;
+        [SerializeField] private RaycastDirection raycastDirection = RaycastDirection.Forward;
+        [SerializeField] private GameObject MetaRayHandInteractor;
+
         private RayInteractable focusedElement;
         private bool isActive = false;
 
-        public void OnUpdate(Transform raycastSource, RaycastDirection raycastDirection)
+        private void Update()
         {
+
             if (!isActive) return;
 
             RaycastHit hit;
-
-            Debug.DrawRay(raycastSource.position, Util.GetRayDirection(raycastSource, raycastDirection) * 10, Color.red);
 
             if (Physics.Raycast(raycastSource.position, Util.GetRayDirection(raycastSource, raycastDirection), out hit))
             {
@@ -23,15 +30,15 @@ namespace VoodooMagic.Scripts.RayInteraction
                 {
                     if (focusedElement != interactable)
                     {
-                        RemoveHighlight();
+                        RemoveHover();
                         focusedElement = interactable;
-                        focusedElement.highlight();
+                        focusedElement.OnHover();
                     }
                     return;
                 }
             }
 
-            RemoveHighlight();
+            RemoveHover();
         }
 
         public void OnPinch()
@@ -44,17 +51,21 @@ namespace VoodooMagic.Scripts.RayInteraction
             if (focusedElement != null) focusedElement.OnGrab();
         }
 
-        public void SetIsActive(bool value)
+        public void SetIsActive(bool active)
         {
-            if (!isActive) RemoveHighlight();
-            isActive = value;
+            if (!active)
+            {
+                RemoveHover();
+            }
+            MetaRayHandInteractor.SetActive(active);
+            isActive = active;
         }
 
-        private void RemoveHighlight()
+        private void RemoveHover()
         {
             if (focusedElement != null)
             {
-                focusedElement.removeHighlight();
+                focusedElement.RemoveHover();
                 focusedElement = null;
             }
         }

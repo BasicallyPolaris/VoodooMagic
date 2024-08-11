@@ -69,14 +69,13 @@ namespace VoodooMagic.Scripts.Controlls
     /// <summary>
     /// Called every frame.
     /// </summary>
-    public void OnUpdate(Transform raycastSource, RaycastDirection raycastDirection, RayInteractor rayInteractor)
+    public void OnUpdate()
     {
       switch (controllerState)
       {
         case ControllerState.SoftPatchInteraction:
           break;
         case ControllerState.RayInteraction:
-          rayInteractor.OnUpdate(raycastSource, raycastDirection);
           break;
         case ControllerState.Idle:
           break;
